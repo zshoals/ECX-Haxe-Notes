@@ -43,6 +43,9 @@ class PositionData {
 	}
 }
 ```
+
+In the above example, PositionData will not be directly used by you, and is only used internally by ECX for macro bullshit. Instead, you will access components/the component list called Position when actually working with this component type.
+
 # What is a Wire?
 An automated macro tool that injects Services (anything that extends from Service, which by default includes Systems and Components) into other classes in a convenient fashion. Utility classes that you want to use in your program using ECX should always extend from Service to permit ECX to be aware of it, and allow Wire<T> to function appropriately.
 	
