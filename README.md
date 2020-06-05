@@ -44,12 +44,17 @@ To use Wires (or most of ECX, really), the World has to have been loaded with a 
 # How do Wires work with Components?
 Wiring in a Component type such as 
 ```Haxe
-var _bullet:Wire<Bullet>;
+var _position:Wire<Position>;
 ``` 
-grants access to that particular component type's component list, and permits you to generate instances of that component by providing the create(entityID) function. \_bullet is immediately available to use in your code without proper instantiation; a nightmarish macro hellscape handles this for you.
+grants access to that particular component type's component list, and permits you to generate instances of that component by providing the create(entityID) function to it. In addition, creating the component immediately returns it so it can be captured like so:
+```Haxe
+var position = _position.create(entityID);
+```
+
+\_position is immediately available to use in your code without proper instantiation; a nightmarish macro hellscape handles this for you.
 
 # How do Wires work with other Services, including Systems?
-You get access to the class' features, that's about it.
+You get access to the class instance's features, that's about it.
 
 # What is a Family?
 A Family is basically a selection query that populates a list with Entities matching the query. For example:
@@ -72,9 +77,3 @@ for(system in world.systems()) {
 }
 ```
 Why does ECX udpate everything by using @:privateAccess? It is a mystery.
-
-
-
-
-
-
