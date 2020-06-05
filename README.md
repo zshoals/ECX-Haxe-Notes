@@ -86,4 +86,4 @@ for(system in world.systems()) {
 	world.invalidate();
 }
 ```
-Why does ECX udpate everything by using @:privateAccess? It is a mystery.
+Why does ECX update everything by using @:privateAccess? It is a mystery.
