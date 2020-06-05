@@ -4,9 +4,11 @@ Write up on basic ECX usage, an ECS for Haxe. Examples are mostly taken from htt
 This short article is meant to simplify some concepts of ECX in clearer English. **IT IS NOT GUARANTEED TO BE 100% ACCURATE**, but I've tried my best given my understanding of how it works, and hopefully even if things are wrong the general idea is still functional.
 
 # Where get? Where docs? Where example?
-Use this fork of ECX which works with Haxe 4+: https://github.com/sh-dave/ecx
-Use this page for the API. NOTE: It is missing some **very important functions, specifically get(), set(), and create()** which are provided by AutoComp and basically necessary to actually use ECX: https://eliasku.github.io/ecx/api-minimal/
-Use this game as a reference while reading through this: https://github.com/eliasku/ecx-richardlord-asteroids/tree/develop/src/net/richardlord/asteroids
+- Use this fork of ECX which works with Haxe 4+: https://github.com/sh-dave/ecx
+
+- Use this page for the API. NOTE: It is missing some **very important functions, specifically get(), set(), and create()** which are provided by AutoComp and basically necessary to actually use ECX: https://eliasku.github.io/ecx/api-minimal/
+
+- Use this game as a reference while reading through this: https://github.com/eliasku/ecx-richardlord-asteroids/tree/develop/src/net/richardlord/asteroids
 
 # Macro Spam
 ECX uses a lot of macros that break Haxe's rules. It contains several instances of automated variable assignment and generates most things for you. Wire<T> and Family<T> are great examples of this in action.
