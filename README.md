@@ -5,6 +5,9 @@ This short article is meant to simplify some concepts of ECX in clearer English.
 
 # Macro Spam
 ECX uses a lot of macros that break Haxe's rules. It contains several instances of automated variable assignment and generates most things for you. Wire<T> and Family<T> are great examples of this in action.
+	
+# What is a World?
+Contains all the assigned Services (Systems, Components, Services) that have been assigned to it from the WorldConfig it was instantiated with. More than one World should be possible.
 
 # What is a Component?
 Components are (mostly) data classes, although they are not excluded from having other functions. Don't make them yourself, just use AutoComp.
@@ -35,6 +38,8 @@ class PositionData {
 ```
 # What is a Wire?
 An automated macro tool that injects Services (anything that extends from Service, which by default includes Systems and Components) into other classes in a convenient fashion. Utility classes that you want to use in your program using ECX should always extend from Service to permit ECX to be aware of it, and allow Wire<T> to function appropriately.
+	
+To use Wires (or most of ECX, really), the World has to have been loaded with a WorldConfig that added the particular Service. Example here: https://github.com/eliasku/ecx-richardlord-asteroids/blob/develop/src/net/richardlord/asteroids/Main.hx
 
 # How do Wires work with Components?
 Wiring in a Component type such as 
@@ -54,7 +59,7 @@ var _aoeDebuffSpells:Family<Debuff, AreaOfEffect, Position>;
 \_aoeDebuffSpells will be some list, populated with all entities that only have the Components Debuff, AreaOfEffect, and Position. Like with Wires, \_aoeDebuffSpells is immediately available to use in your code without proper instantiation.
 
 # What is a System?
-Systems are where the bulk of the work gets done. Your custom system, say, a Collision System, should extend from System. You'll usually provide several Familys and Wires into each system to accomplish whatever task you're trying to accomplish. 
+Systems are where the bulk of the work gets done. Your custom system, say, a Collision System, should extend from System. You'll usually provide several Familys and Wires into each system to accomplish whatever task you're trying to do. 
 
 You specifically try and modify the component data of the entities that have been passed in from Familys.
 
@@ -67,9 +72,6 @@ for(system in world.systems()) {
 }
 ```
 Why does ECX udpate everything by using @:privateAccess? It is a mystery.
-
-
-
 
 
 
