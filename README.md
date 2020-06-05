@@ -61,7 +61,7 @@ grants access to that particular component type's component list, and permits yo
 var position = _position.create(entityID);
 ```
 
-\_position is immediately available to use in your code without proper instantiation; a nightmarish macro hellscape handles this for you.
+\_position is immediately available to use in your code without proper instantiation, assuming you have Wired it; a nightmarish macro hellscape handles this for you.
 
 # How do Wires work with other Services, including Systems?
 You get access to the class instance's features, that's about it.
@@ -71,7 +71,7 @@ A Family is basically a selection query that populates a list with Entities matc
 ```Haxe
 var _aoeDebuffSpells:Family<Debuff, AreaOfEffect, Position>;
 ```
-\_aoeDebuffSpells will be some list, populated with all entities that only have the Components Debuff, AreaOfEffect, and Position. Like with Wires, \_aoeDebuffSpells is immediately available to use in your code without proper instantiation.
+\_aoeDebuffSpells will be some list, populated with all entities that only have the Components Debuff, AreaOfEffect, and Position. Like with Wires, \_aoeDebuffSpells is immediately available to use in your code without proper instantiation, assuming you have Family'd it.
 
 # What is a System?
 Systems are where the bulk of the work gets done. Your custom system, say, a Collision System, should extend from System. You'll usually provide several Familys and Wires into each system to accomplish whatever task you're trying to do. 
