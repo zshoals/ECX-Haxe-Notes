@@ -39,7 +39,7 @@ An automated macro tool that injects Services (anything that extends from Servic
 # How do Wires work with Components?
 Wiring in a Component type such as 
 ```Haxe
-var _bullet:Wire<Bullet>
+var _bullet:Wire<Bullet>;
 ``` 
 grants access to that particular component type's component list, and permits you to generate instances of that component by providing the create(entityID) function. \_bullet is immediately available to use in your code without proper instantiation; a nightmarish macro hellscape handles this for you.
 
@@ -49,12 +49,26 @@ You get access to the class' features, that's about it.
 # What is a Family?
 A Family is basically a selection query that populates a list with Entities matching the query. For example:
 ```Haxe
-var _aoeDebuffSpells:Family<Debuff, AreaOfEffect, Position>
+var _aoeDebuffSpells:Family<Debuff, AreaOfEffect, Position>;
 ```
 \_aoeDebuffSpells will be some list, populated with all entities that only have the Components Debuff, AreaOfEffect, and Position. Like with Wires, \_aoeDebuffSpells is immediately available to use in your code without proper instantiation.
 
 # What is a System?
-Operates on data provided to it. You'll usually provide several Familys and Wires into each system to accomplish whatever task you're trying to accomplish.
+Systems are where the bulk of the work gets done. Your custom system, say, a Collision System, should extend from System. You'll usually provide several Familys and Wires into each system to accomplish whatever task you're trying to accomplish. 
+
+You specifically try and modify the component data of the entities that have been passed in from Familys.
+
+# How the hell do I actually update the World?
+The "official" way is to use SystemRunner from ecx-common: https://github.com/eliasku/ecx-common/blob/develop/src/ecx/common/systems/SystemRunner.hx and execute updateFrame. Alternatively, rip out the update loop specifically and slam it somewhere: 
+```Haxe
+for(system in world.systems()) {
+	@:privateAccess system.update();
+	world.invalidate();
+}
+```
+Why does ECX udpate everything by using @:privateAccess? It is a mystery.
+
+
 
 
 
