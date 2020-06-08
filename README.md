@@ -6,6 +6,8 @@ This short article is meant to simplify some concepts of ECX in clearer English.
 # Where get? Where docs? Where example?
 - Use this fork of ECX which works with Haxe 4+: https://github.com/sh-dave/ecx
 
+- ECX has some common utilities that you may require. Those are found here: https://github.com/eliasku/ecx-common
+
 - Use this page for the API. NOTE: It is missing some **very important functions, specifically get(), set(), and create()** which are provided by AutoComp and basically necessary to actually use ECX: https://eliasku.github.io/ecx/api-minimal/
 
 - Use this game as a reference while reading through this: https://github.com/eliasku/ecx-richardlord-asteroids/tree/develop/src/net/richardlord/asteroids
@@ -16,8 +18,15 @@ ECX uses a lot of macros that break Haxe's rules. It contains several instances 
 # What is a World?
 Contains all the assigned Services (Systems, Components, Services) that have been assigned to it from the WorldConfig it was instantiated with. More than one World should be possible.
 
+The World instance that's created by the Engine and the WorldConfig is automatically assigned to every object that extends from Service. It's accessible through the "world" member variable.
+
 # What is a Component?
-Components are (mostly) data classes, although they are not excluded from having other functions. Don't make them yourself, just use AutoComp.
+Components are (mostly) data classes, although they are not excluded from having other functions. Don't make them yourself, just use AutoComp. You can AutoComp existing complex types without providing a data class in the same file; for example, 
+
+```Haxe
+class Point extends AutoComp<kha.math.Vector2>{}
+```
+will make a class with Kha's Vector2 features accessible to ECX's Wire<T> injection tool.
 
 # What is AutoComp?
 Builds components for you. Function new(){} should apparently be empty, and instead member variables should have default assignments or a specific setup function (appropriately named setup(){} ) should be used. Example of a minimal AutoComp class:
@@ -87,3 +96,4 @@ for(system in world.systems()) {
 }
 ```
 Why does ECX update everything by using @:privateAccess? It is a mystery.
+
