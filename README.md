@@ -99,7 +99,7 @@ for(system in world.systems()) {
 ```
 Why does ECX update everything by using @:privateAccess? It is a mystery.
 
-# I need access to a Service instance on a class that is not itself a Service
+# How do I get access to a Service instance on a class that does not extend from Service?
 Use 
 ```Haxe
 _service = worldInstance.resolve(ServiceType);
