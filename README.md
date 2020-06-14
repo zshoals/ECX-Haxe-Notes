@@ -106,6 +106,6 @@ Use
 ```Haxe
 _service = worldInstance.resolve(ServiceType);
 ```
-Again, another thing not in the API. Painful!
+Again, another thing not in the documentation. Painful!
 
 
