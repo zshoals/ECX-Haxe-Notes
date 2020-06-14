@@ -82,7 +82,9 @@ A Family is basically a selection query that populates a list with Entities matc
 ```Haxe
 var _aoeDebuffSpells:Family<Debuff, AreaOfEffect, Position>;
 ```
-\_aoeDebuffSpells will be some list, populated with all entities that only have the Components named Debuff, AreaOfEffect, and Position. Like with Wires, \_aoeDebuffSpells is immediately available to use in your code without manual assignment, assuming you have Family'd it.
+\_aoeDebuffSpells will be some list, populated with all entities that have the Components named Debuff, AreaOfEffect, and Position. Entities that have components in addition to the specified components will also be selected.
+
+Like with Wires, \_aoeDebuffSpells is immediately available to use in your code without manual assignment, assuming you have Family'd it.
 
 # What is a System?
 Systems are where the bulk of the work gets done. Your custom system, say, a Collision System, should extend from System. You'll usually provide several Familys and Wires into each system to accomplish whatever task you're trying to do. 
