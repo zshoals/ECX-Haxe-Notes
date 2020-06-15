@@ -91,7 +91,8 @@ Systems are where the bulk of the work gets done. Your custom system, say, a Col
 
 You specifically try and modify the component data of the entities that have been passed in from Familys.
 
-# How the hell do I actually update the World?
+# Possible Early Problems
+## How the hell do I actually update the World?
 The "official" way is to use SystemRunner from ecx-common: https://github.com/eliasku/ecx-common/blob/develop/src/ecx/common/systems/SystemRunner.hx and execute updateFrame. Alternatively, rip out the update loop specifically and slam it somewhere: 
 ```Haxe
 for(system in world.systems()) {
@@ -101,11 +102,17 @@ for(system in world.systems()) {
 ```
 Why does ECX update everything by using @:privateAccess? It is a mystery.
 
-# How do I get access to a Service instance on a class that does not extend from Service?
+## How do I get access to a Service instance on a class that does not extend from Service?
 Use 
 ```Haxe
 _service = worldInstance.resolve(ServiceType);
 ```
 Again, another thing not in the documentation. Painful!
+
+## Why is my World capped at 65536 Entities?
+That's the default capacity. Supply a higher capacity when you initialize your world, like so:
+```Haxe
+_world = Engine.createWorld(config, 9999999);
+```
 
 
