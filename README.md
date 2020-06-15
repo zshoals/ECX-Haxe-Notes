@@ -107,7 +107,9 @@ Use
 ```Haxe
 _service = worldInstance.resolve(ServiceType);
 ```
-Again, another thing not in the documentation. Painful!
+Again, another thing not in the documentation. Painful! This can be very useful if you have something that does not fit nicely into ECX's stream of systems, for example, in a decoupled renderer. You can create a system that does not update and simply acts as an entity selector, and then use resolve() to route that information into a non-service class. Check these pages for example usage: 
+https://github.com/eliasku/ecx-benchmarks/blob/develop/src/ecs/benchmarks/ecx/EcxTests.hx
+https://github.com/eliasku/ecx-benchmarks/blob/develop/src/ecs/benchmarks/ecx/EcxSystem.hx
 
 ## Why is my World capped at 65536 Entities?
 That's the default capacity. Supply a higher capacity when you initialize your world, like so:
