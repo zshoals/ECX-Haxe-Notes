@@ -87,7 +87,9 @@ var _aoeDebuffSpells:Family<Debuff, AreaOfEffect, Position>;
 Like with Wires, \_aoeDebuffSpells is immediately available to use in your code without manual assignment, assuming you have Family'd it.
 
 # What is a System?
-Systems are where the bulk of the work gets done. Your custom system, say, a Collision System, should extend from System. You'll usually provide several Familys and Wires into each system to accomplish whatever task you're trying to do. 
+Systems are where the bulk of the work gets done. Your custom system, say, a Collision System, should extend from System. You'll usually provide several Familys and Wires into each system to accomplish whatever task you're trying to do.
+
+These are supposedly forced to be named \[Anything]System.hx, but I haven't really tried not to do this. Who knows what happens!
 
 You specifically try and modify the component data of the entities that have been passed in from Familys.
 
