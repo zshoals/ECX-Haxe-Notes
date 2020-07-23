@@ -114,7 +114,10 @@ Again, another thing not in the documentation. Painful! This can be very useful 
 - https://github.com/eliasku/ecx-benchmarks/blob/develop/src/ecs/benchmarks/ecx/EcxSystem.hx
 
 ## If I can't put anything in a Service's new() function, how do I handle initializing a Service within ECX?
-The ECX docs don't make this clear, but Service provides an overridable initialize() function that you can use in place of new(). This is run automatically once when you generate a world.
+The ECX docs don't make this clear, but Service provides an overridable initialize() function that you can use in place of new(). This is run automatically once when you generate a world. Unfortunately, you still can't pass anything into the initialize function so if you need to pass data in you'll have to do it through some sort of configuration system.
+
+## Configuration system? Huh?
+ECX has the concept of configuration systems which are systems that are only run once; they're classes extending from System that are tagged with the @:config metadata. These can be useful for setting up any necessary services or other aspects of your program. However, this is not the only way to handle things. ECX is not particularly strict about separating state and systems, and the creator even suggests taking the simplest approach with regards issues with state. If you just want to make a firstRun flag or something, that's completely acceptable as well, and ECX won't whine at you for it.
 
 ## Why is my World capped at 65536 Entities?
 That's the default capacity. Supply a higher capacity when you initialize your world, like so:
