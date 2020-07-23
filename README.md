@@ -114,7 +114,7 @@ Again, another thing not in the documentation. Painful! This can be very useful 
 - https://github.com/eliasku/ecx-benchmarks/blob/develop/src/ecs/benchmarks/ecx/EcxSystem.hx
 
 ## If I can't put anything in a Service's new() function, how do I handle initializing a Service within ECX?
-The ECX docs don't make this clear, but Service provides an overridable initialize() function that you can use in place of new(). This is run automatically once when ECX starts up.
+The ECX docs don't make this clear, but Service provides an overridable initialize() function that you can use in place of new(). This is run automatically once when you generate a world.
 
 ## Why is my World capped at 65536 Entities?
 That's the default capacity. Supply a higher capacity when you initialize your world, like so:
