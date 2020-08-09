@@ -119,6 +119,9 @@ The ECX docs don't make this clear, but Service provides an overridable initiali
 ## Configuration system? Huh?
 ECX has the concept of configuration systems which are systems that are only run once; they're classes extending from System that are tagged with the @:config metadata. These can be useful for setting up any necessary services or other aspects of your program. However, this is not the only way to handle things. ECX is not particularly strict about separating state and systems, and the creator even suggests taking the simplest approach with regards issues with state. If you just want to make a firstRun flag or something, that's completely acceptable as well, and ECX won't whine at you for it.
 
+## My program's performance has suddenly tanked and I have no idea why, please help me!!!!
+Assuming you didn't just implement something poorly, the reason you screwed is up is that you probably put something in a Service's new() constructor. DO NOT DO THIS, EVER. Even one variable assignment here annihilates performance on native targets. Use initialize() or some other method of starting your services.
+
 ## Why is my World capped at 65536 Entities?
 That's the default capacity. Supply a higher capacity when you initialize your world, like so:
 ```Haxe
