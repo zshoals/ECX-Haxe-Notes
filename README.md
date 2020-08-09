@@ -127,5 +127,6 @@ That's the default capacity. Supply a higher capacity when you initialize your w
 ```Haxe
 _world = Engine.createWorld(config, 9999999);
 ```
+ECX rounds the capacity to the nearest power of 2 + 1, so the capacity you specify is not going to the actual limit.
 
 
