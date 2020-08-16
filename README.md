@@ -122,6 +122,9 @@ ECX has the concept of configuration systems which are systems that are only run
 ## My program's performance has suddenly tanked and I have no idea why, please help me!!!!
 Assuming you didn't just implement something poorly, the reason you screwed is up is that you probably put something in a Service's new() constructor. DO NOT DO THIS, EVER. Even one variable assignment here annihilates performance on native targets. Use initialize() or some other method of starting your services.
 
+## Any other performance tips?
+Minimize the amount of entity retrievals you use as much as possible. If you look up a component with component.get(entity), store it immediately as a variable. Do not repeatedly look up the same component out of laziness or something, as this is quite an expensive operation.
+
 ## Why is my World capped at 65536 Entities?
 That's the default capacity. Supply a higher capacity when you initialize your world, like so:
 ```Haxe
